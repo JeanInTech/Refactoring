@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "RefactoringLab8/1.0.0": {
+        "runtime": {
+          "RefactoringLab8.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "RefactoringLab8/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
