@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 
 namespace RefactoringLab8
 {
@@ -33,16 +34,15 @@ namespace RefactoringLab8
                 "red","orange","yellow","green",
                 "blue","indigo","purple","pink"
             };
-
             //List<Students> classmates = new List<Students>
             //{
             //    new Students("Caspain", "Melendez", "Detroit","pizza", "red"),
+            //    new Students("Elisa", "Mosley", "Eastpointe", "burgers", "purple"),
             //    new Students("Sanjeev", "Padilla", "Dearborn", "ramen", "orange"),
             //    new Students("Daniel", "Barrow", "Bloomfield Hills", "elote", "yellow"),
             //    new Students("Ted", "Scott", "Sterling Heights", "pesto", "green"),
             //    new Students("Tevin", "Lowery", "Warren", "cookies", "blue"),
             //    new Students("Tobey", "Reeve", "Roseville", "bulgogi", "indigo"),
-            //    new Students("Elisa", "Mosley", "Eastpointe", "burgers", "purple"),
             //    new Students("Jermaine", "Mays", "Detroit", "sushi", "pink")
             //};
 
@@ -54,8 +54,9 @@ namespace RefactoringLab8
 
                 for (int i = 0; i < names.Count; i++)
                 {
-                    Console.WriteLine($"{i+1}. {names[i]}");
+                   Console.WriteLine($"{i+1}. {names[i]}");
                 }
+
                 string input = GetUserInput($"\nWhich student would you like to learn more about? Please enter 1 - {names.Count}");
 
                 bool proceed = true;
@@ -88,10 +89,10 @@ namespace RefactoringLab8
                         input = GetUserInput($"That student does not exist. Please try again. (enter a number 1-{names.Count})");
                     }
                 }
-
+                
                 while (true)
                 {
-                    input = GetUserInput("Do you want to add or remove a student? (enter add, remove, or no)");
+                    input = GetUserInput("Do you want to add a student to the class list? (enter add or no)");
                     if (input == "add")
                     {
                         string firstName = GetUserInput("Okay, let's add a new student. To begin, what's the student's first name?");
@@ -100,50 +101,43 @@ namespace RefactoringLab8
                             firstName = ValidateInput(firstName);                           
                         }
                         names.Add(firstName);
-
                         string lastName = GetUserInput("What's the student's last name?");
                         if (string.IsNullOrEmpty(lastName))
                         {
                             lastName = ValidateInput(lastName);
                         }
                         surnames.Add(lastName);
-
                         string town = GetUserInput("What's the student's hometown?");
                         if (string.IsNullOrEmpty(town))
                         {
                             town = ValidateInput(town);
                         }
                         hometowns.Add(town);
-
                         string food = GetUserInput("What's the student's favorite food?");
                         if (string.IsNullOrEmpty(food))
                         {
                             food = ValidateInput(food);
                         }
                         faveFoods.Add(food);
-
                         string color = GetUserInput("What's the student's favorite color?");
                         if (string.IsNullOrEmpty(color))
                         {
                             color = ValidateInput(color);
                         }
                         faveColors.Add(color);
-
+                        //Students newClassmate = new Students(firstName, lastName, town, food, color);
+                        //names.Add(newClassmate);
                         Console.WriteLine("Great! This student has been added");
-                        break;
-                    }
-                    else if (input == "remove")
-                    {
                         break;
                     }
                     else if (input == "no")
                     {
                         break;
                     }
-                    else if (input != "add" || input != "remove" || input != "no")
+                    else if (input != "add" || input != "no")
                     {
                         input = GetUserInput("Invalid input. Do you want to add or remove a student? (enter add, remove, or no)");
-                        if (input == "add" || input == "remove" || input == "no") continue;
+                        if (input == "add" || input == "no") continue;
                     }
                 }
                 userContinue = UserContinue("Do you want to learn about another student? (y/n)");
